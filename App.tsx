@@ -9,16 +9,18 @@
  */
 
 import React from 'react';
-import {SafeAreaView, FlatList, StatusBar} from 'react-native';
+import {Provider} from 'react-redux';
+
+import store from './src/redux/store';
+import GitCommits from './src/GitCommits';
 
 declare const global: {HermesInternal: null | {}};
 
 const App = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView />
-    </>
+    <Provider store={store}>
+      <GitCommits />
+    </Provider>
   );
 };
 

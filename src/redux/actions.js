@@ -12,7 +12,7 @@ export const fetchCommits = (user, repository) => {
     });
 
     const response = await getCommits(user, repository);
-    if (response.ok) {
+    if (response.status === 200) {
       return dispatch(fetchCommitsSuccess(response.data));
     } else {
       return dispatch(fetchCommitsFailed(response.error));
