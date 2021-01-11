@@ -15,6 +15,7 @@ const GitCommits = ({commits}) => {
     <>
       <StatusBar barStyle="dark-content" />
       <FlatList
+        style={{marginTop: 40}}
         data={commits}
         renderItem={({item}) => <CommitItem data={item} />}
       />

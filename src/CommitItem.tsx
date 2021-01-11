@@ -13,17 +13,21 @@ const CommitItem: React.FunctionComponent<Props> = ({data}) => {
   return (
     <View style={styles.container}>
       <View style={styles.commitMessageContainer}>
-        <Text style={styles.commitMessageText}>
+        <Text
+          style={styles.commitMessageText}
+          numberOfLines={1}
+          ellipsizeMode={'tail'}>
           {parseGitMessage(data.commit.message)}
         </Text>
       </View>
       <View style={{flexDirection: 'row'}}>
         <Image style={styles.tinyLogo} source={{uri: data.author.avatar_url}} />
-        <View>
+        <View style={styles.commitInfoContainer}>
           <Text>{data.commit.author.name}</Text>
           <View style={{flexDirection: 'row'}}>
-            <Text>DEC 22, 2020</Text>
-            <Text>{data.sha}</Text>
+            <Text numberOfLines={1} ellipsizeMode={'tail'}>
+              {data.sha}
+            </Text>
           </View>
         </View>
       </View>
@@ -47,9 +51,12 @@ const styles = StyleSheet.create({
       width: 1,
     },
   },
-  commitMessageContainer: {},
+  commitMessageContainer: {
+    marginLeft: 10,
+    marginBottom: 5,
+  },
   commitMessageText: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     color: 'black',
   },
@@ -57,6 +64,10 @@ const styles = StyleSheet.create({
     borderRadius: 26,
     width: 30,
     height: 30,
+    marginLeft: 10,
+  },
+  commitInfoContainer: {
+    marginLeft: 10,
   },
 });
 

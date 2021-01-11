@@ -15,7 +15,7 @@ export const fetchCommits = (user, repository) => {
     if (response.status === 200) {
       return dispatch(fetchCommitsSuccess(response.data));
     } else {
-      return dispatch(fetchCommitsFailed(response.error));
+      return dispatch(fetchCommitsFailed(response));
     }
   };
 };

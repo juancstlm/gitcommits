@@ -8,7 +8,7 @@ const instance = axios.create({
 export const getCommits = async (user: String, repo: String) => {
   try {
     const response = await instance.get(`repos/${user}/${repo}/commits`, {
-      params: {per_page: 2},
+      params: {per_page: 12},
     });
     return response;
     // const mockData = [
