@@ -3,14 +3,15 @@ import {
   FETCH_COMMITS_FAILED,
   FETCH_COMMITS_SUCCESS,
 } from './actionTypes';
+import {getCommits} from '../../api';
 
 export const fetchCommits = (user, repository) => {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     dispatch({
       type: FETCH_COMMITS,
     });
 
-    const response = api.getCommits(user, repository);
+    const response = await getCommits(user, repository);
     if (response.ok) {
       return dispatch(fetchCommitsSuccess(response.data));
     } else {
