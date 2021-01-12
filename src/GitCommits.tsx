@@ -26,18 +26,43 @@ const GitCommits = ({commits}) => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
-      <View style={{marginTop: 40}}>
-        <TextInput value={user} onChangeText={(text) => setUser(text)} />
-        <TextInput
-          value={repository}
-          onChangeText={(text) => setRepository(text)}
-        />
+      <View
+        style={{
+          marginTop: 40,
+          marginHorizontal: 10,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}>
+        <View style={{flexDirection: 'row'}}>
+          <Text>User:</Text>
+          <TextInput
+            autoCapitalize={'none'}
+            value={user}
+            onChangeText={(text) => setUser(text.trim())}
+          />
+        </View>
+        <View style={{flexDirection: 'row'}}>
+          <Text>Repository:</Text>
+          <TextInput
+            autoCapitalize={'none'}
+            value={repository}
+            onChangeText={(text) => setRepository(text.trim())}
+          />
+        </View>
       </View>
       <TouchableOpacity
+        style={{
+          backgroundColor: 'green',
+          width: 60,
+          height: 40,
+          borderRadius: 10,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
         onPress={() => {
           store.dispatch(fetchCommits(user, repository));
         }}>
-        <Text>Get</Text>
+        <Text style={{fontSize: 20, color: 'white'}}>Get</Text>
       </TouchableOpacity>
       <FlatList
         style={{marginTop: 40}}
